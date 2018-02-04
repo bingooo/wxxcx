@@ -19,12 +19,16 @@ class WxxcxServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $config_file = __DIR__ . '/../config/config.php';
+        if (function_exists('config_path')) {
+            $publishPath = config_path('wxxcx.php');
+        } else {
+            $publishPath = base_path('config/wxxcx.php');
+        }
 
         $this->mergeConfigFrom($config_file, 'wxxcx');
 
         $this->publishes([
-            $config_file => config_path('wxxcx.php')
+            __DIR__ . '/../config/wxxcx.php' => $publishPath,
         ], 'wxxcx');
     }
 
