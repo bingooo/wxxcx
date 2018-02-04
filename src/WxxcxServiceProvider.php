@@ -25,7 +25,7 @@ class WxxcxServiceProvider extends ServiceProvider
             $publishPath = base_path('config/wxxcx.php');
         }
 
-        $this->mergeConfigFrom($config_file, 'wxxcx');
+        $this->mergeConfigFrom($publishPath, 'wxxcx');
 
         $this->publishes([
             __DIR__ . '/../config/wxxcx.php' => $publishPath,
